@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	
+	<constant name="struts.multipart.maxSize" value="15000000" />
+
+	<package name="demo" extends="struts-default">
+		
+		<action name="principal" class="autos.Principal">
+			<result name="error">/error.jsp</result>
+			<result name="success">/index.jsp</result>
+			<result name="input" type="redirectAction">
+            	<param name="actionName">evaluarAutos</param>
+            </result>
+		</action>
+		
+		<action name="login" class="autos.Login">
+			<result name="error">/error.jsp</result>
+			<result name="input" type="redirectAction">
+            	<param name="actionName">evaluarAutos</param>
+            </result>
+			<result name="success" type="redirectAction">
+            	<param name="actionName">principal</param>
+            </result>
+		</action>
+		
+		<action name="logout" class="autos.Logout">
+			<result name="error">/error.jsp</result>
+			<result name="success" type="redirectAction">
+            	<param name="actionName">principal</param>
+            </result>
+		</action>
+		
+		<action name="automovil" class="autos.DescripcionAutomovil">
+		    <result name="error">/error.jsp</result>
+			<result name="success">/descripcionAuto.jsp</result>
+		</action>
+		
+		<action name="buscar" class="autos.Buscar">
+		    <result name="error">/error.jsp</result>
+		    <result name="input" type="redirectAction">
+            	<param name="actionName">principal</param>
+            </result>
+			<result name="success">/categoria.jsp</result>
+		</action>
+		
+		<!-- action name="busqueda" class="autos.Busqueda">
+		    <result name="error">/error.jsp</result>
+			<result name="success">/categoria.jsp</result>
+		</action -->
+		
+		<action name="registro" class="autos.AltaUsuario">
+		    <result name="error">/error.jsp</result>
+			<result name="success" type="redirectAction">
+            	<param name="actionName">principal</param>
+            </result>
+			<result name="input">/registrarVendedor.jsp</result>
+		</action>
+		
+		<action name="registrarVendedor" class="autos.AltaVendedor">
+		    <result name="error">/error.jsp</result>
+			<result name="success" type="redirectAction">
+            	<param name="actionName">principal</param>
+            </result>
+		</action>
+		
+		<action name="registrarAuto" class="autos.RegistrarAuto">
+		    <result name="error" type="redirectAction">
+            	<param name="actionName">principal</param>
+            </result>
+            <result name="success">/registrarAutoForm.jsp</result>
+		</action>
+		
+		<action name="altaAutomovil" class="autos.AltaAutomovil">
+			<result name="error">/error.jsp</result>
+		    <result name="input">/index.jsp</result>
+			<result name="success">/registrarAutoForm.jsp</result>
+		</action>
+		
+		<action name="altaComentario" class="autos.AltaComentario">
+			<result name="error">/error.jsp</result>
+		    <result name="success" type="redirectAction">
+            	<param name="actionName">evaluarAutos</param>
+            	<param name="accion">comentado</param>
+            </result>
+		</action>
+		
+		<action name="altaExperto" class="autos.AltaExperto">
+			<result name="error">/error.jsp</result>
+		    <result name="success">/registroExpertoForm.jsp</result>
+		</action>
+		
+		<action name="perfil" class="autos.PerfilUsuario">
+			<result name="error">/error.jsp</result>
+		    <result name="success">/perfil.jsp</result>
+		</action>
+		
+		<action name="asignarExpertos" class="autos.AsignarExperto">
+			<result name="success">/asignarExpertoForm.jsp</result>
+			<result name="input">/error.jsp</result>
+			<result name="error" type="redirectAction">
+            	<param name="actionName">principal</param>
+            </result>
+		</action>
+		
+		<action name="asignarExpertoAuto" class="autos.AsignarExpertoAuto">
+			<result name="error" type="redirectAction">
+            	<param name="actionName">principal</param>
+            </result>
+            <result name="input" type="redirectAction">
+            	<param name="actionName">principal</param>
+            </result>
+			<result name="success" type="redirectAction">
+            	<param name="actionName">asignarExpertos</param>
+            	<param name="accion">asignado</param>
+            </result>
+		</action>
+		
+		<action name="registrarExperto" class="autos.RegistrarExperto">
+			<result name="success">/registroExpertoForm.jsp</result>
+			<result name="error" type="redirectAction">
+            	<param name="actionName">principal</param>
+            </result>
+		</action>
+		
+		<action name="evaluarAutos" class="autos.EvaluarAutos">
+			<result name="success">/evaluarAutos.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="input" type="redirectAction">
+            	<param name="actionName">principal</param>
+            </result>
+		</action>
+		
+		<action name="altaAdmin" class="autos.AltaAdmin">
+			<result name="success">/altaAdmin.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="input" type="redirectAction">
+            	<param name="actionName">principal</param>
+            </result>
+		</action>
+		
+	</package>
+</struts>
